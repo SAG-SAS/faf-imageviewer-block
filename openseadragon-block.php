@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:       Openseadragon Block
- * Description:       Example block scaffolded with Create Block tool.
- * Version:           0.1.0
+ * Plugin Name:       Openseadragon Image Viewer
+ * Description:       A zoomable image viewer using the open source OpenSeadragon viewer, with support for tiling images
+ * Version:           1.0.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       openseadragon-block
  *
  * @package CreateBlock

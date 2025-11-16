@@ -16,7 +16,7 @@ $post_id = get_the_ID() ?: 0;
 <script>
 	const OSDBlock = { iconsUrl: "<?php echo esc_url($iconsUrl) ?>" };
 </script>
-<div <?php echo esc_attr(get_block_wrapper_attributes()) ?>>
+<div <?php echo get_block_wrapper_attributes() ?>>
 	<div class="osd-container" style="width: 100%; height: <?php echo esc_attr($height) ?>" data-image-url="<?php echo esc_url($image_url) ?>"></div>
 </div>
 

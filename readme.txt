@@ -1,4 +1,4 @@
-=== Openseadragon Image Viewer ===
+=== SAG/FAF Imageviewer ===
 Contributors: ronondex9
 Tags: image, viewing, zoom, tiling
 Requires at least: 6.7
@@ -9,7 +9,7 @@ License: GPLV3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 A zoomable image viewer using the open source OpenSeadragon viewer, with support for tiling images
 
-== OpenSeadragon Image Viewer ==
+== SAG/FAF Imageviewer ==
 
 This plugin adds a zoomable image viewer, using  the open source [OpenSeadragon Image Viewer](https://openseadragon.github.io/).
 

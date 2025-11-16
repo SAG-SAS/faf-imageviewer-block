@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "sag-sas/openseadragon-block",
+	"name": "sag-sas/faf-imageviewer-block",
 	"version": "1.0.0",
-	"title": "Openseadragon Imageviewer",
+	"title": "SAG/FAF Imageviewer",
 	"category": "media",
 	"icon": "format-image",
-	"description": "Zoomable image viewer using the open source OpenSeaDragon viewer with support for tiling images.",
+	"description": "Zoomable image viewer using the open source OpenseaDragon viewer with support for tiling images.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -23,7 +23,7 @@
 			"default": true
 		}
 	},
-	"textdomain": "openseadragon-block",
+	"textdomain": "faf-imageviewer-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

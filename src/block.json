@@ -9,7 +9,11 @@
 	"description": "Zoomable image viewer using the open source OpenseaDragon viewer with support for tiling images.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		]
 	},
 	"attributes": {
 		"imageUrl": {

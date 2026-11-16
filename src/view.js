@@ -24,16 +24,22 @@ function init( el ) {
 		defaultZoomLevel: 0,
 		prefixUrl: window.OSDBlock?.iconsUrl,
 		visibilityRatio: 0.9,
-		tileSources: /\.dzi(\?|$)/.test( source ) ? source : { type: 'image', url: source },
+		tileSources: /\.dzi(\?|$)/.test( source )
+			? source
+			: { type: 'image', url: source },
 	} );
 }
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	document.querySelectorAll( `.${ blockClass } .osd-container` ).forEach( init );
+	document
+		.querySelectorAll( `.${ blockClass } .osd-container` )
+		.forEach( init );
 	document.querySelectorAll( 'details' ).forEach( ( details ) =>
 		details.addEventListener( 'toggle', () => {
 			if ( details.open ) {
-				details.querySelectorAll( `.${ blockClass } .osd-container` ).forEach( init );
+				details
+					.querySelectorAll( `.${ blockClass } .osd-container` )
+					.forEach( init );
 			}
 		} )
 	);

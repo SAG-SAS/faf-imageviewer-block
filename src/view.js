@@ -1,50 +1,40 @@
 /**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
+ * Front-end: one OpenSeadragon viewer per block. Uses Deep Zoom tiles when `data-tile-source`
+ * is a .dzi, otherwise the single image. Viewers inside a closed <details> start when it opens.
  */
+import OpenSeadragon from 'openseadragon';
+import metadata from './block.json';
 
-import OpenSeadragon from "openseadragon";
-import metadata from "./block.json";
+const blockClass = 'wp-block-' + metadata.name.replace( '/', '-' );
 
-const blockClass = "wp-block-" + metadata.name.replace("/", "-");
+function init( el ) {
+	if ( el.osdViewer ) {
+		el.osdViewer.forceResize();
+		return;
+	}
+	const source = el.dataset.tileSource || el.dataset.imageUrl;
+	if ( ! source || ! el.offsetHeight ) {
+		return; // not visible yet
+	}
+	el.osdViewer = OpenSeadragon( {
+		element: el,
+		autoHideControls: false,
+		imageSmoothingEnabled: false,
+		showNavigator: false,
+		defaultZoomLevel: 0,
+		prefixUrl: window.OSDBlock?.iconsUrl,
+		visibilityRatio: 0.9,
+		tileSources: /\.dzi(\?|$)/.test( source ) ? source : { type: 'image', url: source },
+	} );
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-	document
-		.querySelectorAll(`.${blockClass} .osd-container`)
-		.forEach((el) => {
-			const imageUrl = el.dataset.imageUrl;
-			if (imageUrl) {
-				OpenSeadragon({
-					element: el,
-					autoHideControls: false,
-					imageSmoothingEnabled: false,
-					showNavigator: false,
-					defaultZoomLevel: 0,
-					prefixUrl:
-						OSDBlock.iconsUrl,
-					visibilityRatio: 0.9,
-					tileSources: {
-						type: "image",
-						url: imageUrl,
-					},
-				});
+document.addEventListener( 'DOMContentLoaded', () => {
+	document.querySelectorAll( `.${ blockClass } .osd-container` ).forEach( init );
+	document.querySelectorAll( 'details' ).forEach( ( details ) =>
+		details.addEventListener( 'toggle', () => {
+			if ( details.open ) {
+				details.querySelectorAll( `.${ blockClass } .osd-container` ).forEach( init );
 			}
-		});
-});
+		} )
+	);
+} );

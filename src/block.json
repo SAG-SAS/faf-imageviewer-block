@@ -21,6 +21,9 @@
 		"useFeatured": {
 			"type": "boolean",
 			"default": true
+		},
+		"attachmentId": {
+			"type": "integer"
 		}
 	},
 	"textdomain": "faf-imageviewer-block",
